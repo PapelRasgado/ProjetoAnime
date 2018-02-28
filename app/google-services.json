@@ -1,0 +1,55 @@
+{
+  "project_info": {
+    "project_number": "924824592244",
+    "firebase_url": "https://projetos-784dc.firebaseio.com",
+    "project_id": "projetos-784dc",
+    "storage_bucket": "projetos-784dc.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:924824592244:android:e72ae55d24e5f526",
+        "android_client_info": {
+          "package_name": "jp.com.projetoanime"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "924824592244-0k400edbn9npisslpukmfmn1hggja244.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "jp.com.projetoanime",
+            "certificate_hash": "10844f1750999561ab19b67e9fa3127df4b7ffa6"
+          }
+        },
+        {
+          "client_id": "924824592244-6jm78gp702hbcou9t2go1l0p5uv4m7l2.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCvpxRUSXUAM49IYrw5PTaOGYM341ra6zM"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 2,
+          "other_platform_oauth_client": [
+            {
+              "client_id": "924824592244-6jm78gp702hbcou9t2go1l0p5uv4m7l2.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

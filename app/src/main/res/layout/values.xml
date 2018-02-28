@@ -1,0 +1,159 @@
+<?xml version="1.0" encoding="utf-8"?>
+<AbsoluteLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="#fff">
+
+    <ImageView
+        android:id="@+id/conc_imagem"
+        android:layout_width="120dp"
+        android:layout_height="120dp"
+        android:layout_x="9dp"
+        android:layout_y="5dp"
+        android:visibility="visible" />
+
+    <TextView
+        android:id="@+id/conc_nome"
+        android:layout_width="207dp"
+        android:layout_height="39dp"
+        android:layout_x="138dp"
+        android:layout_y="5dp"
+        android:text="Nome: Exemplo"
+        android:textSize="15.5sp"
+        android:visibility="visible" />
+
+    <ImageButton
+        android:id="@+id/exemplo_menos"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_x="141dp"
+        android:layout_y="71dp"
+        android:background="@android:color/background_light"
+        android:visibility="visible"
+        app:srcCompat="@drawable/menos" />
+
+    <TextView
+        android:id="@+id/exemplo_ep_num"
+        android:layout_width="59dp"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="20dp"
+        android:layout_marginStart="20dp"
+        android:layout_x="191dp"
+        android:layout_y="84dp"
+        android:text="0"
+        android:textAlignment="center"
+        android:textSize="20sp"
+        android:visibility="visible" />
+
+    <ImageButton
+        android:id="@+id/exemplo_mais"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="14dp"
+        android:layout_x="250dp"
+        android:layout_y="72dp"
+        android:background="@android:color/background_light"
+        android:visibility="visible"
+        app:srcCompat="@drawable/mais" />
+
+    <ImageButton
+        android:id="@+id/exemplo_excluir"
+        android:layout_width="35dp"
+        android:layout_height="35dp"
+        android:layout_x="313dp"
+        android:layout_y="85dp"
+        android:background="@color/colorPrimary"
+        app:srcCompat="@android:drawable/ic_menu_delete"
+        tools:layout_editor_absoluteX="312dp"
+        tools:layout_editor_absoluteY="54dp" />
+
+    <ImageButton
+        android:id="@+id/exemplo_view"
+        android:layout_width="35dp"
+        android:layout_height="35dp"
+        android:layout_x="313dp"
+        android:layout_y="46dp"
+        android:background="@color/colorPrimary"
+        app:srcCompat="@android:drawable/ic_menu_view"
+        tools:layout_editor_absoluteX="315dp"
+        tools:layout_editor_absoluteY="19dp" />
+
+    <TextView
+        android:id="@+id/exemplo_notas"
+        android:layout_width="match_parent"
+        android:layout_height="34dp"
+        android:layout_marginRight="10dp"
+        android:layout_x="392dp"
+        android:layout_y="4dp"
+        android:text="Notas: "
+        tools:layout_editor_absoluteX="360dp"
+        tools:layout_editor_absoluteY="18dp" />
+
+    <TextView
+        android:id="@+id/exemplo_temp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_x="393dp"
+        android:layout_y="53dp"
+        android:text="Temporada:"
+        tools:layout_editor_absoluteX="377dp"
+        tools:layout_editor_absoluteY="83dp" />
+
+    <ImageButton
+        android:id="@+id/exemplo_menos_temp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_x="393dp"
+        android:layout_y="74dp"
+        android:background="@android:color/background_light"
+        app:srcCompat="@drawable/menos"
+        tools:layout_editor_absoluteX="429dp"
+        tools:layout_editor_absoluteY="66dp" />
+
+    <TextView
+        android:id="@+id/exemplo_temp_num"
+        android:layout_width="52dp"
+        android:layout_height="wrap_content"
+        android:layout_x="443dp"
+        android:layout_y="87dp"
+        android:text="0"
+        android:textAlignment="center"
+        android:textSize="20sp"
+        tools:layout_editor_absoluteX="496dp"
+        tools:layout_editor_absoluteY="84dp" />
+
+    <ImageButton
+        android:id="@+id/exemplo_mais_temp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_x="495dp"
+        android:layout_y="75dp"
+        android:background="@android:color/background_light"
+        app:srcCompat="@drawable/mais"
+        tools:layout_editor_absoluteX="524dp"
+        tools:layout_editor_absoluteY="66dp" />
+
+    <TextView
+        android:id="@+id/exemplo_ep"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_x="142dp"
+        android:layout_y="49dp"
+        android:text="Episodio:"
+        tools:layout_editor_absoluteX="140dp"
+        tools:layout_editor_absoluteY="41dp" />
+
+    <ImageButton
+        android:id="@+id/exemplo_send"
+        android:layout_width="35dp"
+        android:layout_height="35dp"
+        android:layout_x="553dp"
+        android:layout_y="86dp"
+        android:background="@color/colorPrimary"
+        app:srcCompat="@android:drawable/ic_menu_send"
+        tools:layout_editor_absoluteX="543dp"
+        tools:layout_editor_absoluteY="72dp" />
+
+</AbsoluteLayout>
