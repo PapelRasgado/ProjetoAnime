@@ -73,7 +73,7 @@ public class TelaSugestao extends AppCompatActivity {
                 texto.setText("Qual o nome do anime?");
                 new AlertDialog.Builder(TelaSugestao.this)
                         .setView(conView)
-                        .setPositiveButton("Comfirmar", new DialogInterface.OnClickListener() {
+                        .setPositiveButton("Confirmar", new DialogInterface.OnClickListener() {
                             public void onClick(DialogInterface dialog, int which) {
                                 if (edt.getText().length() > 0) {
                                     sugestoes.add(edt.getText().toString());

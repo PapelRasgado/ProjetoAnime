@@ -2,6 +2,7 @@ package jp.com.projetoanime;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.os.PersistableBundle;
 import android.support.v7.app.AppCompatActivity;
 import android.view.MenuItem;
 import android.view.View;
@@ -27,6 +28,8 @@ public class TelaView extends AppCompatActivity {
 
     int animeP;
 
+    boolean edit = false;
+
     File file;
 
     List<Anime> animes;
@@ -41,6 +44,10 @@ public class TelaView extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
 
         super.onCreate(savedInstanceState);
+        if (savedInstanceState != null) {
+            edit = savedInstanceState.getBoolean("STATE_EDIT");
+        }
+
         setContentView(R.layout.tela_view);
 
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
@@ -49,7 +56,6 @@ public class TelaView extends AppCompatActivity {
         animeP = getIntent().getIntExtra("position", -1) ;
 
         file = getFileStreamPath(FILENAME);
-
 
         try{
             FileInputStream fis = new FileInputStream(file);
@@ -77,9 +83,23 @@ public class TelaView extends AppCompatActivity {
         notas.setText(anime.getNotas());
         url.setText(anime.getImage());
 
+        if (edit) {
+            editBtn.setVisibility(View.GONE);
+            editBtn.setEnabled(false);
+            btnConc.setVisibility(View.VISIBLE);
+            btnConc.setEnabled(true);
+
+            nome.setEnabled(true);
+            ep.setEnabled(true);
+            temp.setEnabled(true);
+            notas.setEnabled(true);
+            url.setEnabled(true);
+        }
+
         editBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                edit = true;
                 editBtn.setVisibility(View.GONE);
                 editBtn.setEnabled(false);
                 btnConc.setVisibility(View.VISIBLE);
@@ -126,17 +146,22 @@ public class TelaView extends AppCompatActivity {
                         fos.close();
                     }catch(Exception e){
                     }
-
+                    edit = false;
                     recreate();
 
                 } else {
                     Toast.makeText(getApplicationContext(), "Por favor coloque o nome e o ep do anime!!", Toast.LENGTH_SHORT).show();
                 }
 
-
             }
         });
 
+    }
+
+    @Override
+    public void onSaveInstanceState(Bundle savedInstanceState) {
+        savedInstanceState.putBoolean("STATE_EDIT", edit);
+        super.onSaveInstanceState(savedInstanceState);
     }
 
     public boolean onOptionsItemSelected(MenuItem item) {
