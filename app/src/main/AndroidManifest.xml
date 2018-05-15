@@ -19,7 +19,7 @@
             </intent-filter>
         </activity>
         <activity android:name=".TelaCadastro" />
-        <activity android:name=".TelaView" />
+        <activity android:name=".TelaEdit" />
         <activity android:name=".TelaSugestao" />
         <activity android:name=".TelaCompleta" />
     </application>

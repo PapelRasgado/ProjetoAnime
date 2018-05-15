@@ -2,7 +2,6 @@ package jp.com.projetoanime;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.os.PersistableBundle;
 import android.support.v7.app.AppCompatActivity;
 import android.view.MenuItem;
 import android.view.View;
@@ -22,18 +21,15 @@ import java.util.List;
  * Created by João Paulo on 19/02/2018.
  */
 
-public class TelaView extends AppCompatActivity {
+public class TelaEdit extends AppCompatActivity {
 
     final String FILENAME = "animes_lista";
 
     int animeP;
 
-    boolean edit = false;
-
     File file;
 
     List<Anime> animes;
-    ImageButton editBtn;
     Button btnConc;
     EditText nome;
     EditText ep;
@@ -44,11 +40,7 @@ public class TelaView extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
 
         super.onCreate(savedInstanceState);
-        if (savedInstanceState != null) {
-            edit = savedInstanceState.getBoolean("STATE_EDIT");
-        }
-
-        setContentView(R.layout.tela_view);
+        setContentView(R.layout.tela_edit);
 
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         getSupportActionBar().setHomeButtonEnabled(true);
@@ -67,7 +59,6 @@ public class TelaView extends AppCompatActivity {
 
         }
 
-        editBtn = findViewById(R.id.edit_btn);
         btnConc = findViewById(R.id.btn_conc_edit);
         nome = findViewById(R.id.nome_edit);
         ep = findViewById(R.id.ep_edit);
@@ -82,36 +73,6 @@ public class TelaView extends AppCompatActivity {
         temp.setText(anime.getTemp() + "");
         notas.setText(anime.getNotas());
         url.setText(anime.getImage());
-
-        if (edit) {
-            editBtn.setVisibility(View.GONE);
-            editBtn.setEnabled(false);
-            btnConc.setVisibility(View.VISIBLE);
-            btnConc.setEnabled(true);
-
-            nome.setEnabled(true);
-            ep.setEnabled(true);
-            temp.setEnabled(true);
-            notas.setEnabled(true);
-            url.setEnabled(true);
-        }
-
-        editBtn.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                edit = true;
-                editBtn.setVisibility(View.GONE);
-                editBtn.setEnabled(false);
-                btnConc.setVisibility(View.VISIBLE);
-                btnConc.setEnabled(true);
-
-                nome.setEnabled(true);
-                ep.setEnabled(true);
-                temp.setEnabled(true);
-                notas.setEnabled(true);
-                url.setEnabled(true);
-            }
-        });
 
         btnConc.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -146,8 +107,10 @@ public class TelaView extends AppCompatActivity {
                         fos.close();
                     }catch(Exception e){
                     }
-                    edit = false;
-                    recreate();
+
+                    finishAffinity();
+                    Intent it = new Intent(TelaEdit.this, MainActivity.class);
+                    startActivity(it);
 
                 } else {
                     Toast.makeText(getApplicationContext(), "Por favor coloque o nome e o ep do anime!!", Toast.LENGTH_SHORT).show();
@@ -158,17 +121,12 @@ public class TelaView extends AppCompatActivity {
 
     }
 
-    @Override
-    public void onSaveInstanceState(Bundle savedInstanceState) {
-        savedInstanceState.putBoolean("STATE_EDIT", edit);
-        super.onSaveInstanceState(savedInstanceState);
-    }
 
     public boolean onOptionsItemSelected(MenuItem item) {
         switch (item.getItemId()) {
             case android.R.id.home:
                 finishAffinity();
-                Intent it = new Intent(TelaView.this, MainActivity.class);
+                Intent it = new Intent(TelaEdit.this, MainActivity.class);
                 startActivity(it);
                 return true;
         }

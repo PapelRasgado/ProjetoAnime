@@ -70,13 +70,13 @@
         tools:layout_editor_absoluteY="54dp" />
 
     <ImageButton
-        android:id="@+id/exemplo_view"
+        android:id="@+id/exemplo_edit"
         android:layout_width="35dp"
         android:layout_height="35dp"
         android:layout_x="313dp"
         android:layout_y="46dp"
         android:background="@color/colorPrimary"
-        app:srcCompat="@android:drawable/ic_menu_view"
+        app:srcCompat="@android:drawable/ic_menu_edit"
         tools:layout_editor_absoluteX="315dp"
         tools:layout_editor_absoluteY="19dp" />
 

@@ -5,14 +5,14 @@ import android.app.AlertDialog;
 import android.content.ClipData;
 import android.content.ClipboardManager;
 import android.content.DialogInterface;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
 import android.widget.TextView;
 import android.widget.Toast;
-import com.squareup.picasso.Picasso;
+
+import com.bumptech.glide.Glide;
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileOutputStream;
@@ -29,10 +29,10 @@ public class AdapterConc extends BaseAdapter{
 
     private final List<Anime> elementos;
     private final Activity act;
-    final String FILENAME1 = "animes_lista";
-    final String FILENAME2 = "conc_lista";
-    final File fileAnime;
-    final File fileConc;
+    private final String FILENAME1 = "animes_lista";
+    private final String FILENAME2 = "conc_lista";
+    private final File fileAnime;
+    private final File fileConc;
 
     public AdapterConc(Activity act) {
 
@@ -94,9 +94,13 @@ public class AdapterConc extends BaseAdapter{
 
         //set imagem
         if (anime.getImage() != null && anime.getImage().length() > 0) {
-            Picasso.with(act).load(anime.getImage()).into(holder.image);
+            Glide.with(act)
+                    .load(anime.getImage())
+                    .into(holder.image);
         } else {
-            Picasso.with(act).load("@android:color/background_light").into(holder.image);
+            Glide.with(act)
+                    .load("@android:color/background_light")
+                    .into(holder.image);
         }
 
         //set TextViews

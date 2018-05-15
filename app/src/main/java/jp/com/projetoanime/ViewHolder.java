@@ -18,7 +18,7 @@ public class ViewHolder{
     ImageButton btnMaisEp;
     ImageButton btnMenosEp;
     ImageButton btnExcluir;
-    ImageButton btnView;
+    ImageButton btnEdit;
     ImageButton btnMaisTemp;
     ImageButton btnMenosTemp;
     ImageButton btnSend;

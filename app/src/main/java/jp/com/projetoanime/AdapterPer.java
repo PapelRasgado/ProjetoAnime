@@ -10,10 +10,11 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
+import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.squareup.picasso.Picasso;
+import com.bumptech.glide.Glide;
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileOutputStream;
@@ -30,10 +31,10 @@ public class AdapterPer extends BaseAdapter {
 
     private final List<Anime> elementos;
     private final Activity act;
-    final String FILENAME1 = "animes_lista";
-    final String FILENAME2 = "conc_lista";
-    final File fileAnime;
-    final File fileConc;
+    private final String FILENAME1 = "animes_lista";
+    private final String FILENAME2 = "conc_lista";
+    private  File fileAnime;
+    private final File fileConc;
 
     public AdapterPer(Activity act) {
 
@@ -86,7 +87,7 @@ public class AdapterPer extends BaseAdapter {
             holder.ep = convertView.findViewById(R.id.exemplo_ep);
             holder.epNum = convertView.findViewById((R.id.exemplo_ep_num));
             holder.btnExcluir = convertView.findViewById(R.id.exemplo_excluir);
-            holder.btnView = convertView.findViewById(R.id.exemplo_view);
+            holder.btnEdit = convertView.findViewById(R.id.exemplo_edit);
             holder.btnMaisTemp = convertView.findViewById(R.id.exemplo_mais_temp);
             holder.btnMenosTemp = convertView.findViewById(R.id.exemplo_menos_temp);
             holder.temp = convertView.findViewById(R.id.exemplo_temp);
@@ -102,9 +103,13 @@ public class AdapterPer extends BaseAdapter {
 
         //set imagem
         if (anime.getImage() != null && anime.getImage().length() > 0) {
-            Picasso.with(act).load(anime.getImage()).into(holder.image);
+            Glide.with(act)
+                    .load(anime.getImage())
+                    .into(holder.image);
         } else {
-            Picasso.with(act).load("@android:color/background_light").into(holder.image);
+            Glide.with(act)
+                    .load("@android:color/background_light")
+                    .into(holder.image);
         }
 
         //set TextViews
@@ -169,7 +174,7 @@ public class AdapterPer extends BaseAdapter {
             }
         });
 
-        holder.image.setOnClickListener(new View.OnClickListener() {
+        holder.nome.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 ClipboardManager clipboard = (ClipboardManager) act.getSystemService(act.CLIPBOARD_SERVICE);
@@ -179,10 +184,44 @@ public class AdapterPer extends BaseAdapter {
             }
         });
 
-        holder.btnView.setOnClickListener(new View.OnClickListener() {
+        holder.image.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent it = new Intent(act, TelaView.class);
+                LayoutInflater inflater = act.getLayoutInflater();
+                View conView = inflater.inflate(R.layout.layout_view, null);
+                ImageView image = conView.findViewById(R.id.img_view);
+                Glide.with(act)
+                        .load(anime.getImage())
+                        .into(image);
+                TextView nome = conView.findViewById(R.id.txt_view_nome);
+                nome.setText("Nome: " + anime.getNome());
+
+                TextView nota = conView.findViewById(R.id.txt_view_notas);
+                nota.setText("Notas: " + anime.getNotas());
+
+                TextView info = conView.findViewById(R.id.txt_view_info);
+                info.setText("Episódio: " + anime.getEp() + "  /  Temporada: " + anime.getTemp());
+
+                final AlertDialog d = new AlertDialog.Builder(act)
+                        .setView(conView)
+                        .create();
+
+                TextView txtButton = conView.findViewById(R.id.txt_btn);
+                txtButton.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        d.dismiss();
+                    }
+                });
+                d.show();
+
+            }
+        });
+
+        holder.btnEdit.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent it = new Intent(act, TelaEdit.class);
                 it.putExtra("position", elementos.indexOf(anime));
                 act.startActivity(it);
             }
